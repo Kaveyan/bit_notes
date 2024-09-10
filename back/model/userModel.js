@@ -1,47 +1,40 @@
-const mongoose=require('mongoose')
+const mongoose = require('mongoose');
+
+
 const userSchema = new mongoose.Schema({
     firstName: {
-      type: String,
-      required: [true, 'Please add a First Name']
+        type: String,
+        required: [true, 'Please add a First Name']
     },
     department: {
-      type: String,
-      required: [true, 'Please add a Department']
+        type: String,
+        required: [true, 'Please add a Department']
     },
     batch: {
-      type: Number,
-      required: [true, 'Please add a Batch']
+        type: Number,
+        required: function () { return this.role === 'student'; }, 
     },
     email: {
-      type: String,
-      required: [true, 'Please add an Email'],
-      unique: true
+        type: String,
+        required: [true, 'Please add an Email'],
+        unique: true
     },
     password: {
-      type: String,
-      required: [true, 'Please add a Password']
+        type: String,
+        required: [true, 'Please add a Password']
+    },
+    role: {
+        type: String,
+        enum: ['student', 'faculty'],
+        required: true
+    },
+    point:{
+        type:Number,
+        default: 0
     }
-  });
-  const facultySchema = new mongoose.Schema({
-    firstName: {
-      type: String,
-      required: [true, 'Please add a First Name']
-    },
-    department: {
-      type: String,
-      required: [true, 'Please add a Department']
-    },
-    email: {
-      type: String,
-      required: [true, 'Please add an Email'],
-      unique: true
-    },
-    password: {
-      type: String,
-      required: [true, 'Please add a Password']
-    }
-  });
+});
+
+
 
 const User = mongoose.model('User', userSchema);
-const Faculty = mongoose.model('Faculty', facultySchema);
-module.exports ={User,Faculty};
+module.exports = { User };
