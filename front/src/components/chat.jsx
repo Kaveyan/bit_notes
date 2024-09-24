@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGhost, faRocket } from '@fortawesome/free-solid-svg-icons';
+import { faRocket } from '@fortawesome/free-solid-svg-icons';
 
 export default function Chat() {
   const [message, setMessage] = useState('');
@@ -83,43 +83,30 @@ export default function Chat() {
   }, [chatMessages]);
 
   return (
-    <div className="flex flex-col w-full">
-      <div className="flex-1 bg-white shadow-md rounded-lg p-4 mb-4">
-        <h2 className="text-3xl font-bold mb-4">Group Chat</h2>
-        <div className="chat-box overflow-y-auto border border-gray-300 rounded-lg p-4" style={{ height: 'calc(100vh - 265px)' }}>
-          {chatMessages.length > 0 ? (
-            chatMessages.map((msg, index) => (
-              <div key={index} className="chat-message mb-2">
-                <p className="chat-sender font-semibold">
-                  <FontAwesomeIcon icon={faGhost} className="mr-2" />
-                  {msg.sender.firstName}
-                </p>
-                <p className="chat-content bg-gray-100 p-2 rounded-md">
-                  <FontAwesomeIcon icon={faRocket} className="mr-2" />
-                  {msg.message}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p className="text-gray-500">No messages yet. Start the conversation!</p>
-          )}
-          {/* This empty div acts as a scroll target */}
-          <div ref={chatEndRef} />
-        </div>
+    <div className="w-full p-4 bg-white shadow-md rounded-lg flex flex-col h-full">
+      <h2 className="text-xl font-bold mb-4">Group Chat</h2>
+      <div className="flex-1 overflow-y-auto border border-gray-300 rounded-lg p-4">
+        {/* Chat messages */}
+        {chatMessages.map((msg, idx) => (
+          <div key={idx} className="mb-4">
+            <span className="font-semibold">{msg.sender.firstName}: </span>
+            <span>{msg.message}</span>
+            <div className="text-sm text-gray-500">{msg.timestamp}</div>
+          </div>
+        ))}
+        <div ref={chatEndRef} />
       </div>
-      <form onSubmit={handleSendMessage} className="flex p-4 mb-16 bg-white border-t border-gray-300">
+
+      <form onSubmit={handleSendMessage} className="flex mt-4">
         <input
           type="text"
-          placeholder="Type a message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="flex-1 border border-gray-300 p-2 rounded-md mr-2"
+          className="flex-1 border border-gray-300 p-2 rounded-md"
+          placeholder="Type a message"
         />
-        <button
-          type="submit"
-          className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition duration-200"
-        >
-          Send
+        <button className="ml-2 bg-blue-500 text-white p-2 rounded-md">
+          <FontAwesomeIcon icon={faRocket} />
         </button>
       </form>
     </div>
