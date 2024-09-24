@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from "react-router-dom";
 import src from "../img/Free Vector _ Unboxing concept illustration.jpeg";
-import "./all.css";
+import '../styles/tailwind.css';
+
 
 export default function Login() {
   const [role, setRole] = useState("");

@@ -1,6 +1,6 @@
 const express = require('express')
 const http = require('http')
-// const mongoose = require('mongoose')
+const mongoose = require('mongoose')
 const cors = require('cors');
 const userRouter = require('./router/userRouter');
 const chatRouter = require('./router/chatRouter');  // Import chat routes
@@ -22,10 +22,10 @@ const port = 8000;
 app.use(express.json());
 app.use(cors());
 
-// // Connect to MongoDB
-// mongoose.connect('mongodb://127.0.0.1:27017/mern-app1')
-//     .then(() => console.log('DB connected'))
-//     .catch(err => console.log('DB connection error:', err));
+// Connect to MongoDB
+mongoose.connect('mongodb://127.0.0.1:27017/bitlearn')
+    .then(() => console.log('DB connected'))
+    .catch(err => console.log('DB connection error:', err));
 
 // User routes
 app.use('/users', userRouter);

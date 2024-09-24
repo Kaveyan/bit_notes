@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Menu from './Menu';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faNoteSticky, faHeart } from '@fortawesome/free-solid-svg-icons';
+import Card from './Cards';
 
 export default function Home() {
   const [uploads, setUploads] = useState([]);
@@ -62,40 +60,8 @@ export default function Home() {
       setError(error.message);
     }
   };
-  
 
   return (
-    <div className="dash">
-      <div className="dash-menu">
-        <Menu />
-      </div>
-
-      <div className="dash-main-admin">
-        {error && <p>Error: {error}</p>}
-        <div className="grid-container">
-          {uploads.map((upload) => (
-            <div className="display-box" key={upload._id}>
-              <h1>{upload.subject}</h1>
-              <p>
-                <a
-                  href={upload.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="icon-link"
-                >
-                  <FontAwesomeIcon icon={faNoteSticky} />
-                </a>
-              </p>
-              <div className="box-down">
-                <p className="user">by {upload.user.firstName}</p>
-                <p onClick={() => handleLike(upload._id)}>
-                  <FontAwesomeIcon icon={faHeart} /> &nbsp; {upload.points}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <Card uploads={uploads} error={error} handleLike={handleLike} />
   );
 }

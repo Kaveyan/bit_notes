@@ -33,24 +33,37 @@ export default function Rank() {
   }, []);
 
   return (
-    <div className='dash'>
-      <div className='dash-menu'>
-        <Menu />
-      </div>
-
-      <div className='dash-main-admin'>
-        <h2>Ranking <FontAwesomeIcon icon={faRankingStar} /></h2>
-        {error && <p>Error: {error}</p>}
-        {users.map((user, index) => (
-          <div className='box' key={index}>
-            <div className='box-content'>
-              <h3><FontAwesomeIcon icon={faRankingStar} /> {user.firstName}</h3>
-              <p>{user.department}</p>
-              <p>{user.batch}</p>
-              <p>{user.point}</p>
-            </div>
-          </div>
-        ))}
+    <div className="flex-1 p-6">
+      <h2 className="text-3xl font-bold mb-4 flex items-center">
+        Ranking <FontAwesomeIcon icon={faRankingStar} className="ml-2" />
+      </h2>
+      {error && <p className="text-red-500">{error}</p>}
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+          <thead className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+            <tr>
+              <th className="py-3 px-6 text-left">Rank</th>
+              <th className="py-3 px-6 text-left">Name</th>
+              <th className="py-3 px-6 text-left">Department</th>
+              <th className="py-3 px-6 text-left">Batch</th>
+              <th className="py-3 px-6 text-left">Points</th>
+            </tr>
+          </thead>
+          <tbody className="text-gray-600 text-sm font-medium uppercase">
+            {users.map((user, index) => (
+              <tr key={index} className="border-b border-gray-200 hover:bg-gray-100">
+                <td className="py-4 px-6">{index + 1}</td>
+                <td className="py-4 px-6 flex items-center">
+                  <FontAwesomeIcon icon={faRankingStar} className="mr-2 text-yellow-500" />
+                  {user.firstName}
+                </td>
+                <td className="py-4 px-6">{user.department}</td>
+                <td className="py-4 px-6">{user.batch}</td>
+                <td className="py-4 px-6 font-bold">{user.point} points</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
