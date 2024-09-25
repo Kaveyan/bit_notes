@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import img from "../img/student.gif";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight , faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { Link, useNavigate } from "react-router-dom";
 
 export default function StudentCreate() {
   const [formData, setFormData] = useState({
@@ -10,6 +13,7 @@ export default function StudentCreate() {
     password: '',
     role: 'student'
   });
+;
 
   const handleChange = (e) => {
     setFormData({
@@ -56,8 +60,9 @@ export default function StudentCreate() {
 
       {/* Form on the right */}
       <div className="w-full lg:w-1/2 flex justify-center">
-        <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-lg transform transition duration-300 hover:scale-105">
-          <header className="text-2xl font-bold text-center text-gray-800 mb-8">Register Here</header>
+      {/* transform transition duration-300 hover:scale-105 */}
+        <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-lg ">
+          <header className="text-2xl font-bold text-center text-gray-800 mb-8">Student Registration</header>
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
               <div className="flex-1">
@@ -117,13 +122,26 @@ export default function StudentCreate() {
                   className="mt-1 block w-full p-2 mb-4 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200"
                 />
               </div>
+              
             </div>
+            
             <button 
               type="submit" 
               className="block w-52 py-2 mx-auto bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition"
             >
               Submit
             </button>
+            <div className='justify-center text-center '>
+            <Link to="/" className="text-indigo-600 hover:underline">
+            <FontAwesomeIcon icon={faArrowLeft} /> Back to Login
+              </Link>
+              <br />
+              <Link to="/facultycreate" className="text-indigo-600 hover:underline">
+                Faculty Register <FontAwesomeIcon icon={faArrowRight} />
+              </Link>
+            </div>
+            
+            
           </form>
         </div>
       </div>

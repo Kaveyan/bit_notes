@@ -57,11 +57,12 @@ export default function Login() {
 
       {/* Form on the right */}
       <div className="w-full lg:w-1/2 flex justify-center">
-        <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-lg transform transition duration-300 hover:scale-105">
+      {/* transform transition duration-300 hover:scale-105 */}
+        <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-lg "> 
           <header className="text-2xl font-bold text-center text-gray-800 mb-8">Login Here</header>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label htmlFor="role" className="block text-sm font-medium text-gray-600">Enter As</label>
+              <label htmlFor="role" className="block text-sm font-medium text-gray-600">Role </label>
               <select
                 id="role"
                 name="role"

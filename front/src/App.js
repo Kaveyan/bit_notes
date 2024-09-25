@@ -18,7 +18,7 @@ function App() {
         <Route path="/home" element={<MainLayout><Home /></MainLayout>} />
         <Route path="/faculty" element={<MainLayout><Facultyhome /></MainLayout>} />
         <Route path="/studentcreate" element={<Studentcreate />} />
-        <Route path="/facultycreate" element={<MainLayout><Facultycreate /></MainLayout>} />
+        <Route path="/facultycreate" element={<Facultycreate />} />
         <Route path="/rank" element={<MainLayout><Rank /></MainLayout>} />
         <Route path="/upload" element={<MainLayout><Upload /></MainLayout>} />
         <Route path="/chat" element={<MainLayout><Chat /></MainLayout>} />
