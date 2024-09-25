@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<MainLayout><Home /></MainLayout>} />
         <Route path="/faculty" element={<MainLayout><Facultyhome /></MainLayout>} />
-        <Route path="/studentcreate" element={<MainLayout><Studentcreate /></MainLayout>} />
+        <Route path="/studentcreate" element={<Studentcreate />} />
         <Route path="/facultycreate" element={<MainLayout><Facultycreate /></MainLayout>} />
         <Route path="/rank" element={<MainLayout><Rank /></MainLayout>} />
         <Route path="/upload" element={<MainLayout><Upload /></MainLayout>} />
