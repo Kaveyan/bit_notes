@@ -24,7 +24,7 @@ export default function TeacherCreate() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8000/users/register', {
+      const response = await fetch('https://bit-notes-backend.onrender.com/users/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

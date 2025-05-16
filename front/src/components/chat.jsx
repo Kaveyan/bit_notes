@@ -13,7 +13,7 @@ export default function Chat() {
 
     if (token) {
       try {
-        const response = await fetch('http://localhost:8000/chat/messages', {
+        const response = await fetch('https://bit-notes-backend.onrender.com/chat/messages', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`, // Include token in request
@@ -48,7 +48,7 @@ export default function Chat() {
       setMessage(''); // Clear input field
 
       try {
-        const response = await fetch('http://localhost:8000/chat/send', {
+        const response = await fetch('https://bit-notes-backend.onrender.com/chat/send', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

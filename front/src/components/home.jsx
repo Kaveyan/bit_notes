@@ -8,7 +8,7 @@ export default function Home() {
   useEffect(() => {
     const fetchUploads = async () => {
       try {
-        const response = await fetch('http://localhost:8000/users/uploads', {
+        const response = await fetch('https://bit-notes-backend.onrender.com/users/uploads', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ export default function Home() {
 
   const handleLike = async (uploadId) => {
     try {
-      const response = await fetch(`http://localhost:8000/users/uploads/${uploadId}/like`, {
+      const response = await fetch(`https://bit-notes-backend.onrender.com/users/uploads/${uploadId}/like`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

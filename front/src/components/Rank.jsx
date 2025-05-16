@@ -10,7 +10,7 @@ export default function Rank() {
   useEffect(() => {
     const fetchRanking = async () => {
       try {
-        const response = await fetch('http://localhost:8000/users/ranking', {
+        const response = await fetch('https://bit-notes-backend.onrender.com/users/ranking', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
