@@ -39,14 +39,14 @@ export default function Rank() {
       </h2>
       {error && <p className="text-red-500">{error}</p>}
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+        <table className="min-w-full bg-white border border-gray-0 rounded-lg shadow-md">
           <thead className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
             <tr>
               <th className="py-3 px-6 text-left">Rank</th>
               <th className="py-3 px-6 text-left">Name</th>
               <th className="py-3 px-6 text-left">Department</th>
               <th className="py-3 px-6 text-left">Batch</th>
-              <th className="py-3 px-6 text-left">Points</th>
+             
             </tr>
           </thead>
           <tbody className="text-gray-600 text-sm font-medium uppercase">
@@ -59,7 +59,7 @@ export default function Rank() {
                 </td>
                 <td className="py-4 px-6">{user.department}</td>
                 <td className="py-4 px-6">{user.batch}</td>
-                <td className="py-4 px-6 font-bold">{user.point} points</td>
+               
               </tr>
             ))}
           </tbody>

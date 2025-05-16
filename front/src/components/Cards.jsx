@@ -20,11 +20,13 @@ export default function Card({ uploads, error, handleLike }) {
               />
             </a>
             <div className="p-4 flex flex-col flex-grow">
-              <h5 className="text-lg  text-white font-semibold">{upload.subject}</h5>
-              <p className="flex-grow text-white">{upload.description}</p>
+              <h5 className="text-lg  text-dark font-semibold">{upload.subject}</h5>
+              <p className="flex-grow text-dark">{upload.description}</p>
               <div className="mt-4 flex justify-between items-center">
-                <p className="text-white">Author: {upload.user.firstName}</p>
-                <a className="text-blue-500 hover:underline">Inspect</a>
+                <p className="text-dark">Author: {upload.user.firstName}</p>
+                <p className="text-blue-500 hover:#dc2626"  onClick={() => handleLike(upload._id)}>
+                  <FontAwesomeIcon icon={faHeart} /> &nbsp; {upload.points}
+                </p>
               </div>
             </div>
           </div>

@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function TeacherCreate() {
   const [formData, setFormData] = useState({
-    fullName: '',
+    firstName: '',
     department: '',
     email: '',
     password: '',
@@ -67,9 +67,9 @@ export default function TeacherCreate() {
                 <label className="block text-sm font-medium text-gray-600">Full Name</label>
                 <input
                   type="text"
-                  name="fullName"
+                  name="firstName"
                   placeholder="Name..."
-                  value={formData.fullName}
+                  value={formData.firstName}
                   onChange={handleChange}
                   className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200"
                 />

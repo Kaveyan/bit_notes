@@ -34,12 +34,11 @@ router.post('/uploads/:id/like', protect, async (req, res) => {
           return res.status(404).json({ message: 'Upload not found' });
       }
 
-      // Check if the user has already liked this upload
       if (upload.likedBy.includes(req.user._id)) {
           return res.status(400).json({ message: 'You have already liked this post' });
       }
 
-      // Add the user's ID to the likedBy array and increment the points
+     
       upload.likedBy.push(req.user._id);
       upload.points += 1;
 
@@ -47,7 +46,7 @@ router.post('/uploads/:id/like', protect, async (req, res) => {
       const user = await User.findById(upload.user);
 
       if (user) {
-          user.point += 1; // Add 1 point for each like
+          user.point += 1; 
           await user.save();
       }
 
@@ -61,13 +60,14 @@ router.post('/uploads/:id/like', protect, async (req, res) => {
 
 router.get('/ranking', protect, async (req, res) => {
     try {
-        const users = await User.find().sort({ point: -1 }).select('firstName department batch totalPoints');
+        const users = await User.find({ role: 'student' })
+            .sort({ point: -1 })
+            .select('firstName department batch point');
         res.json(users);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
 
-
-
 module.exports = router;
+
